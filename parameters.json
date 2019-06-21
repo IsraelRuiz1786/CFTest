@@ -1,0 +1,40 @@
+{
+    "AWSTemplateFormatVersion": "2010-09-09",
+    "Description": "My Template",
+    "Metadata": {
+    },
+    "Parameters": {
+      "InstanceType": {
+          "Description": "Enter t2.micro, m1.small, or m1.large. Default is t2.micro.",
+          "Type": "String",
+          "Default": "m1.small",
+          "AllowedValues": ["t2.micro","m1.small","m1.large"],
+      },
+      "DBPassword": {
+          "Description": "Enter a new password for your database",
+          "Type": "String",
+          "NoEcho":true,
+          "MinLength": 8,
+          "MaxLength":10
+      },
+      "AZs": {
+          "Description": "Choose AZ",
+          "Type": "AWS::EC2::AvailabilityZone::Name"
+      }
+    },
+    "Mappings": {
+    },
+    "Conditions": {
+    },
+    "Resources": {
+      "MyVpc": {
+        "Type": "AWS::EC2::VPC",
+        "Properties": {
+          "CidrBlock": "10.20.0.0/16",
+          "Tags": []
+        }
+      }
+    },
+    "Outputs": {
+    }
+}
